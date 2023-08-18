@@ -12,7 +12,40 @@ def spiral_matrix(n: int) -> List[List[int]]:
         List[List[int]]: table filled with numbers
     """
 
-    return []
+    ans = [[0] * n for _ in range(n)]
+
+    counter = 1
+    level = 0
+
+    while counter < n * n:
+        for col in range(level, n - level - 1):
+            ans[level][col] = counter
+            counter += 1
+
+        for row in range(level, n - level - 1):
+            ans[row][n - level - 1] = counter
+            counter += 1
+
+        for col in range(n - level - 1, level, -1):
+            ans[n - level - 1][col] = counter
+            counter += 1
+
+        for row in range(n - level - 1, level, -1):
+            ans[row][level] = counter
+            counter += 1
+
+        level += 1
+
+    if n % 2 != 0:
+        center = n // 2
+        ans[center][center] = n * n
+
+    return ans
+
+
+matrix = spiral_matrix(1)
+for r in matrix:
+    print(r)
 
 
 # https://leetcode.com/problems/spiral-matrix-ii/
