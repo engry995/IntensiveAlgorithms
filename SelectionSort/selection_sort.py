@@ -12,7 +12,17 @@ def selection_sort(array: List[int]) -> List[int]:
         List[int]: sorted array
     """
 
-    return []
+    for i in range(len(array)):
+        current_min = array[i]
+        current_min_idx = i
+        for j in range(i + 1, len(array)):
+            if array[j] < current_min:
+                current_min = array[j]
+                current_min_idx = j
+
+        array[i], array[current_min_idx] = array[current_min_idx], array[i]
+
+    return array
 
 
 # https://leetcode.com/problems/sort-colors/
