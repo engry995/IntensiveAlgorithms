@@ -11,7 +11,21 @@ def are_brackets_correct(string: str) -> bool:
         bool: are parentheses correct
     """
 
-    return False
+    stack = []
 
+    pair = {
+        '(': ')',
+        '{': '}',
+        '[': ']',
+    }
+
+    for sym in string:
+        if sym in pair:
+            stack.append(sym)
+        else:
+            if not stack or sym != pair[stack.pop()]:
+                return False
+
+    return len(stack) == 0
 
 # https://leetcode.com/problems/valid-parentheses/
