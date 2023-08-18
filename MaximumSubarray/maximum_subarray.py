@@ -12,7 +12,17 @@ def maximum_subarray(array: List[int]) -> int:
         int: sum
     """
 
-    return 0
+    best = cur_sum = 0
+    for n in array:
+        cur_sum += n
+        best = max(best, cur_sum)
+        if cur_sum < 0:
+            cur_sum = 0
+
+    if best == 0:
+        best = max(array)
+
+    return best
 
 
 # https://leetcode.com/problems/maximum-subarray/
