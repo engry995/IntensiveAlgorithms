@@ -15,8 +15,14 @@ def reverse_linked_list(node: Node) -> None:
     Args:
         node (Node): head of linked list
     """
+    def reverse(node):
+        if node.next:
+            reverse(node.next)
+            node.next.next = node
+            node.next = None
+
+    reverse(node)
 
     return
-
 
 # https://leetcode.com/problems/reverse-linked-list/
