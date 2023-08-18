@@ -12,11 +12,10 @@ class TreeNode:
 class Solution:
 
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-
         if not root:
             return []
 
-        ans = [[]]
+        ans = []
         next_level = [root]
 
         def bfs(nodes: list[TreeNode]):
